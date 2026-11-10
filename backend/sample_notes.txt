@@ -1,0 +1,16 @@
+Physics Chapter 1: Newton's Laws of Motion
+
+Isaac Newton formulated three fundamental laws of classical mechanics in 1687.
+
+First Law (Law of Inertia):
+An object at rest stays at rest, and an object in motion stays in motion with the same speed and in the same direction unless acted upon by an unbalanced external force.
+Inertia is the natural tendency of an object to resist changes in its state of motion.
+
+Second Law (Force and Acceleration):
+The acceleration of an object is directly proportional to the net force acting upon it and inversely proportional to its mass.
+Formula: F = m * a, where F is force in Newtons (N), m is mass in kilograms (kg), and a is acceleration in m/s^2.
+
+Third Law (Action and Reaction):
+For every action, there is an equal and opposite reaction.
+Whenever one object exerts a force on a second object, the second object exerts an equal and opposite force on the first object.
+Forces always occur in matched pairs.

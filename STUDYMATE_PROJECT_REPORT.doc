@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html xmlns:o="urn:schemas-microsoft-com:office:office" 
+      xmlns:w="urn:schemas-microsoft-com:office:word" 
+      xmlns="http://www.w3.org/TR/REC-html40">
+<head>
+  <meta charset="utf-8">
+  <title>StudyMate — Summer Internship Project Report</title>
+  <style>
+    body {
+      font-family: 'Calibri', 'Segoe UI', Arial, sans-serif;
+      font-size: 11pt;
+      line-height: 1.5;
+      color: #1A1A2E;
+      margin: 40px;
+    }
+    h1 {
+      font-size: 24pt;
+      color: #5B21B6;
+      border-bottom: 3px solid #22E4FF;
+      padding-bottom: 8px;
+      margin-top: 24px;
+    }
+    h2 {
+      font-size: 16pt;
+      color: #2E1065;
+      border-bottom: 1px solid #E2E8F0;
+      padding-bottom: 4px;
+      margin-top: 20px;
+    }
+    h3 {
+      font-size: 13pt;
+      color: #4C1D95;
+      margin-top: 14px;
+    }
+    p, li {
+      font-size: 11pt;
+      color: #334155;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 16px 0;
+      font-size: 10pt;
+    }
+    th, td {
+      border: 1px solid #CBD5E1;
+      padding: 8px 12px;
+      text-align: left;
+    }
+    th {
+      background-color: #F1F5F9;
+      color: #0F172A;
+      font-weight: bold;
+    }
+    tr:nth-child(even) {
+      background-color: #F8FAFC;
+    }
+    .badge {
+      display: inline-block;
+      padding: 3px 8px;
+      font-size: 9pt;
+      font-weight: bold;
+      border-radius: 4px;
+      background-color: #EDE9FE;
+      color: #6D28D9;
+    }
+    .callout {
+      background-color: #F0FDF4;
+      border-left: 4px solid #22C55E;
+      padding: 12px 16px;
+      margin: 16px 0;
+      font-size: 10.5pt;
+    }
+    pre, code {
+      font-family: 'Consolas', 'Courier New', monospace;
+      font-size: 9.5pt;
+      background-color: #F1F5F9;
+      color: #0F172A;
+    }
+    pre {
+      padding: 12px;
+      border-radius: 6px;
+      border: 1px solid #E2E8F0;
+      overflow-x: auto;
+    }
+    .hero {
+      text-align: center;
+      padding: 30px;
+      background: #F8FAFC;
+      border: 1px solid #E2E8F0;
+      border-radius: 8px;
+      margin-bottom: 30px;
+    }
+    .hero h1 {
+      border: none;
+      margin: 0;
+      padding: 0;
+      color: #4338CA;
+    }
+    .hero p {
+      font-size: 13pt;
+      color: #64748B;
+      margin-top: 6px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="hero">
+    <h1>STUDYMATE — AI STUDY ASSISTANT</h1>
+    <p>Summer Internship Project Report & Complete Technical Documentation</p>
+    <p style="font-size: 10pt; color: #94A3B8;">Built with FastAPI, LangGraph, MongoDB, React & Tailwind CSS</p>
+  </div>
+
+  <h2>1. Executive Summary</h2>
+  <p>
+    <strong>StudyMate</strong> is an agentic, full-stack educational web application designed to solve student exam preparation challenges. Unlike generic AI chatbots that frequently hallucinate out-of-syllabus information, StudyMate strictly grounds its answers in uploaded class materials (PDF, TXT, MD) and supplies verifiable file name and page number citations. In addition to precision Q&A, StudyMate features an active-recall multiple-choice question engine, interactive flashcards, and an adaptive weak-topics tracker that pinpoints misunderstood concepts and provides targeted practice.
+  </p>
+
+  <h2>2. Problem Statement & Motivation</h2>
+  <p>Students face significant hurdles when attempting to use standard commercial AI for coursework:</p>
+  <ul>
+    <li><strong>Hallucinations & Edition Mismatch:</strong> Generic models provide generic textbook explanations that often contradict specific lecture formulations.</li>
+    <li><strong>Lack of Verifiability:</strong> Standard chatbots provide no verifiable page references, leaving students unable to double-check their lecture slides.</li>
+    <li><strong>Passive Reading Trap:</strong> Re-reading lecture slides yields low retention. Students need dynamic active-recall quizzes tied to their own notes.</li>
+    <li><strong>Unfocused Revision:</strong> Students lack quantitative visibility into which sub-topics they consistently miss across self-assessments.</li>
+  </ul>
+
+  <h2>3. High-Level Architecture & Technical Stack</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Layer</th>
+        <th>Technologies Used</th>
+        <th>Engineering Purpose</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Backend API</strong></td>
+        <td>Python 3.12, FastAPI, Uvicorn, Pydantic v2</td>
+        <td>High-performance asynchronous REST endpoints with schema validation and automated OpenAPI docs.</td>
+      </tr>
+      <tr>
+        <td><strong>Agentic Orchestration</strong></td>
+        <td>LangGraph, LangChain Core</td>
+        <td>Cyclic state graph governing retrieval decisions, relevance grading, and query rewriting with guardrails.</td>
+      </tr>
+      <tr>
+        <td><strong>Vector & Document Store</strong></td>
+        <td>Motor (Async MongoDB driver), MongoDB</td>
+        <td>Unified persistence for notes, 384-dimensional vector chunks, quizzes, attempts, and topic statistics.</td>
+      </tr>
+      <tr>
+        <td><strong>Local Embeddings</strong></td>
+        <td>FastEmbed (BAAI/bge-small-en-v1.5)</td>
+        <td>100% free, offline CPU-based vector embeddings running locally in 384 dimensions.</td>
+      </tr>
+      <tr>
+        <td><strong>Frontend</strong></td>
+        <td>React 18, Vite 6, Tailwind CSS, Recharts, Lucide Icons</td>
+        <td>Ultra-fast, responsive single-page application with modern dark-mode glass styling and interactive charts.</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2>4. Core Features & Capabilities</h2>
+  
+  <h3>4.1 Document Ingestion & Vector Chunking Pipeline</h3>
+  <p>
+    When a student uploads a course document (up to 100 MB), the file is processed through an automated text-processing pipeline:
+  </p>
+  <ul>
+    <li><strong>PDF Extraction:</strong> Extracted page-by-page using <code>pypdf</code>.</li>
+    <li><strong>Token-Aware Chunking:</strong> Text is sliced into ~500 token chunks using <code>tiktoken</code> with a 50-token overlap to maintain context across splits while preserving exact page numbers.</li>
+    <li><strong>Vectorization:</strong> Dense vectors are generated via <code>LocalFastEmbed</code> and stored in MongoDB along with file metadata.</li>
+  </ul>
+
+  <h3>4.2 Grounded LangGraph Agent (Corrective RAG)</h3>
+  <p>
+    The agent follows a 5-node cyclic state graph:
+  </p>
+  <ol>
+    <li><code>decide_node</code>: Detects conversational greetings without touching the database.</li>
+    <li><code>retrieve_node</code>: Performs cosine similarity vector search over stored note chunks.</li>
+    <li><code>grade_chunks_node</code>: Evaluates if retrieved chunks meet a similarity threshold.</li>
+    <li><code>rewrite_query_node</code>: Reformulates poor queries to retry search (capped at 2 retries to prevent loops).</li>
+    <li><code>generate_answer_node</code>: Produces the factual answer with exact <code>[File, Page]</code> citations or returns <em>"I could not find this in your notes."</em></li>
+  </ol>
+
+  <h3>4.3 Active Recall Quiz & Spaced Repetition Flashcards</h3>
+  <ul>
+    <li>Generates multiple-choice questions with 4 options, single correct answers, concise explanations, and topic tags.</li>
+    <li>Conceals correct answers from client payload until student submits their choices.</li>
+    <li><strong>Flashcards Mode:</strong> Flip-to-reveal cards citing source notes for quick review.</li>
+    <li><strong>Export Revision Sheet:</strong> Allows one-click download of a clean Markdown study summary of quiz questions and explanations.</li>
+  </ul>
+
+  <h3>4.4 Adaptive Weak Topics Analytics</h3>
+  <p>
+    Every quiz submission records topic accuracy in the <code>topic_stats</code> collection. The dashboard computes the student's error rate per topic and displays an interactive Recharts gradient bar chart. The student can click any weak topic pill to instantly launch a targeted quiz on that concept.
+  </p>
+
+  <h2>5. Database Schema</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Collection</th>
+        <th>Primary Fields</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>notes</code></td>
+        <td>_id, user_id, filename, file_type, subject, page_count, created_at</td>
+        <td>Stores document records and raw text pages.</td>
+      </tr>
+      <tr>
+        <td><code>chunks</code></td>
+        <td>_id, note_id, filename, subject, page, text, embedding[384]</td>
+        <td>Vector chunks searched via cosine similarity.</td>
+      </tr>
+      <tr>
+        <td><code>quizzes</code></td>
+        <td>_id, subject, topic, num_questions, questions[]</td>
+        <td>Generated question sets with answer keys.</td>
+      </tr>
+      <tr>
+        <td><code>attempts</code></td>
+        <td>_id, quiz_id, score_percentage, correct_count, results[]</td>
+        <td>Submission logs and review records.</td>
+      </tr>
+      <tr>
+        <td><code>topic_stats</code></td>
+        <td>_id, user_id, topic, subject, total_attempts, correct, wrong</td>
+        <td>Aggregated metrics driving weak-topics analysis.</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2>6. Automated Testing & Benchmark Results</h2>
+  <div class="callout">
+    <strong>Benchmark Summary:</strong> Evaluated across 20 distinct academic and edge-case questions with 100% pass rate.
+  </div>
+  <ul>
+    <li><strong>In-Domain Questions:</strong> 100% cited exact note files and page numbers.</li>
+    <li><strong>Conversational Queries:</strong> Handled smoothly without wasting database operations.</li>
+    <li><strong>Out-of-Domain Inquiries:</strong> Strict grounding successfully rejected irrelevant queries with <em>"I could not find this in your notes."</em></li>
+    <li><strong>Pytest Suite:</strong> Unit tests for token chunking, cosine math, and API endpoints all pass green.</li>
+  </ul>
+
+  <h2>7. Conclusion</h2>
+  <p>
+    StudyMate successfully demonstrates the practical implementation of agentic AI workflows in higher education. By uniting deterministic retrieval, active-recall assessments, and weak-topic tracking, the platform provides students with a reliable, hallucination-free study environment tailored to their coursework.
+  </p>
+
+</body>
+</html>

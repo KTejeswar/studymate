@@ -1,0 +1,122 @@
+/* ===================================================================
+   StudyMate CSS Variable Theme Definitions
+   All components must consume these tokens, never hardcoded colors.
+   =================================================================== */
+
+/* ── THEME 1: AURORA GLASS (Default Dark) ────────────────────────── */
+:root,
+[data-theme="aurora"] {
+  --bg-base: #05050A;
+
+  /* Typography */
+  --text-primary: #F5F3FF;
+  --text-secondary: #B9B5D6;
+  --text-muted: #797596;
+
+  /* Neon Brand Accents (Exact match to uploaded banner) */
+  --accent-lavender: #B794FF;
+  --accent-cyan: #22E4FF;
+  --accent-violet: #5B21B6;
+  --accent-brand: #B794FF;
+
+  /* Status Colors (paired with icons) */
+  --status-green: #39FF88;
+  --status-amber: #FFC857;
+  --status-red: #FF5C7A;
+
+  /* Glassmorphism Specs */
+  --glass-bg: rgba(255, 255, 255, 0.08);
+  --glass-fallback: #0D0D17;
+  --glass-hover: rgba(255, 255, 255, 0.12);
+  --glass-border: rgba(255, 255, 255, 0.14);
+  --glass-border-hover: rgba(183, 148, 255, 0.45);
+  --glass-highlight: rgba(255, 255, 255, 0.22);
+  --glass-blur: 16px;
+  --glass-saturate: 140%;
+
+  /* Shadows */
+  --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37), inset 0 1px 0 0 rgba(255, 255, 255, 0.12);
+  --glass-shadow-hover: 0 14px 44px 0 rgba(91, 33, 182, 0.28), inset 0 1px 0 0 rgba(255, 255, 255, 0.25);
+  --glow-shadow: 0 0 24px rgba(34, 228, 255, 0.35);
+
+  --radius-panel: 1rem; /* rounded-2xl */
+  --mesh-opacity: 1;
+}
+
+/* ── THEME 2: COZY PASTEL (Light) ────────────────────────────────── */
+[data-theme="cozy"] {
+  --bg-base: #FFF8F1;
+
+  /* Typography */
+  --text-primary: #3B3550;
+  --text-secondary: #6B6482;
+  --text-muted: #9F97B6;
+
+  /* Accents */
+  --accent-lavender: #8B6CF6;
+  --accent-cyan: #06B6D4;
+  --accent-violet: #7C3AED;
+  --accent-brand: #8B6CF6;
+
+  /* Status */
+  --status-green: #10B981;
+  --status-amber: #F59E0B;
+  --status-red: #EF4444;
+
+  /* Glass */
+  --glass-bg: rgba(255, 255, 255, 0.65);
+  --glass-fallback: #FFFFFF;
+  --glass-hover: rgba(255, 255, 255, 0.85);
+  --glass-border: rgba(255, 255, 255, 0.8);
+  --glass-border-hover: rgba(139, 108, 246, 0.45);
+  --glass-highlight: rgba(255, 255, 255, 0.95);
+  --glass-blur: 14px;
+  --glass-saturate: 120%;
+
+  /* Shadows */
+  --glass-shadow: 0 8px 30px rgba(139, 108, 246, 0.08), inset 0 1px 0 0 rgba(255, 255, 255, 0.8);
+  --glass-shadow-hover: 0 14px 40px rgba(139, 108, 246, 0.16);
+  --glow-shadow: 0 0 20px rgba(139, 108, 246, 0.25);
+
+  --radius-panel: 1.5rem; /* rounded-3xl */
+  --mesh-opacity: 0.9;
+}
+
+/* ── THEME 3: MINIMAL FOCUS (Clean High-Contrast) ────────────────── */
+[data-theme="minimal"] {
+  --bg-base: #FAFAFA;
+
+  /* Typography */
+  --text-primary: #111827;
+  --text-secondary: #4B5563;
+  --text-muted: #9CA3AF;
+
+  /* Accents */
+  --accent-lavender: #4F46E5;
+  --accent-cyan: #0284C7;
+  --accent-violet: #4338CA;
+  --accent-brand: #4F46E5;
+
+  /* Status */
+  --status-green: #059669;
+  --status-amber: #D97706;
+  --status-red: #DC2626;
+
+  /* Solid Cards (No Blur, No Mesh) */
+  --glass-bg: #FFFFFF;
+  --glass-fallback: #FFFFFF;
+  --glass-hover: #FFFFFF;
+  --glass-border: #E5E7EB;
+  --glass-border-hover: #4F46E5;
+  --glass-highlight: transparent;
+  --glass-blur: 0px;
+  --glass-saturate: 100%;
+
+  /* Shadows */
+  --glass-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.05), 0 1px 2px -1px rgba(0, 0, 0, 0.05);
+  --glass-shadow-hover: 0 4px 6px -1px rgba(0, 0, 0, 0.08);
+  --glow-shadow: none;
+
+  --radius-panel: 0.75rem; /* rounded-xl */
+  --mesh-opacity: 0;
+}

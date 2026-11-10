@@ -1,0 +1,38 @@
+[project]
+name = "studymate-backend"
+version = "0.1.0"
+description = "StudyMate – AI study assistant backend"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "fastapi>=0.115",
+    "uvicorn[standard]>=0.32",
+    "pydantic>=2.10",
+    "pydantic-settings>=2.7",
+    "motor>=3.7",               # async MongoDB driver
+    "pypdf>=5.4",               # PDF text extraction
+    "python-multipart>=0.0.18", # file uploads
+    "langgraph>=0.4",
+    "langchain-core>=0.3",
+    "langchain-groq>=0.2",
+    "langchain-openai>=0.3",
+    "fastembed>=0.3",
+    "numpy>=2.2",               # cosine similarity
+    "tiktoken>=0.9",            # token counting for chunking
+    "python-dotenv>=1.1",
+    "fastembed>=0.4",           # local CPU embeddings (no API key required)
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.3",
+    "pytest-asyncio>=0.25",
+    "httpx>=0.28",              # async test client for FastAPI
+]
+
+[tool.hatch.build.targets.wheel]
+packages = ["app"]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
